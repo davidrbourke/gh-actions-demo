@@ -38,6 +38,7 @@ jobs:
         # uses: TreTuna/sync-branches@ea58ab6e406fd3ad016a064b31270bbb41127f41
         uses: TreTuna/sync-branches@1.4.0
         with:
+          GITHUB_TOKEN: ${{ github.token }}
           # Branch from make pull-request from
           FROM_BRANCH: main
           # Branch to make the pull-request against
