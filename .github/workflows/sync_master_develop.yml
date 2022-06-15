@@ -12,8 +12,7 @@ jobs:
       - name: Checkout out code
         uses: actions/checkout@v3
 
-      - name: Sync branches
-        id: sync
+      - name: Sync
         uses: TreTuna/sync-branches@1.4.0
         with:
           GITHUB_TOKEN: ${{ github.token }}
@@ -26,7 +25,7 @@ jobs:
           REVIEWERS: '["davidrbourke"]'
           
       - name: Set Auto merge
-        if: steps.sync.outcome == 'success'
+        if: steps.Sync.outcome == 'success'
         uses: kenhowardpdx/auto-merge-action@v1
         with:
           token: ${{ github.token }}
