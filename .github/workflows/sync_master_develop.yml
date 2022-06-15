@@ -9,7 +9,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout out code
+        uses: actions/checkout@v3
+
       - name: Sync branches
         uses: TreTuna/sync-branches@1.4.0
         with:
@@ -21,3 +23,8 @@ jobs:
           PULL_REQUEST_IS_DRAFT: false
           CONTENT_COMPARISON: true
           REVIEWERS: '["davidrbourke"]'
+      - name: Auto Approve
+        uses: hmarr/auto-approve-action@v2.2.1
+        with:
+          # The GITHUB_TOKEN secret
+          github-token: ${{ github.token }}
