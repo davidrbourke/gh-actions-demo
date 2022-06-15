@@ -17,7 +17,7 @@ jobs:
           FROM_BRANCH: main
           TO_BRANCH: develop
           PULL_REQUEST_TITLE: 'Pull {FROM_BRANCH} updates into {TO_BRANCH} branch'
-          PULL_REQUEST_TITLE: 'Auto-generated pull request to pull updates from {fromBranch} into {toBranch}'
+          PULL_REQUEST_BODY: 'Auto-generated pull request to pull updates from {fromBranch} into {toBranch}'
           PULL_REQUEST_IS_DRAFT: false
           CONTENT_COMPARISON: true
           REVIEWERS: [davidrbourke]
