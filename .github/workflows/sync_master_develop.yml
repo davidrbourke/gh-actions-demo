@@ -16,8 +16,8 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           FROM_BRANCH: main
           TO_BRANCH: develop
-          PULL_REQUEST_TITLE: `Pull 'main' branch updates into 'develop' branch`
-          PULL_REQUEST_BODY: `Auto-generated pull request to pull updates from 'main' branch into 'develop' branch.`
+          PULL_REQUEST_TITLE: "Pull 'main' branch updates into 'develop' branch"
+          PULL_REQUEST_BODY: "Auto-generated pull request to pull updates from 'main' branch into 'develop' branch."
           PULL_REQUEST_IS_DRAFT: false
           CONTENT_COMPARISON: true
           REVIEWERS: '["davidrbourke"]'
