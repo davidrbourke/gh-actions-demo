@@ -1,0 +1,23 @@
+name: 'Synchronise develop from master'
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Sync branches
+        uses: TreTuna/sync-branches@1.4.0
+        with:
+          GITHUB_TOKEN: ${{ github.token }}
+          FROM_BRANCH: main
+          TO_BRANCH: develop
+          PULL_REQUEST_TITLE: 'Pull {FROM_BRANCH} updates into {TO_BRANCH} branch'
+          PULL_REQUEST_TITLE: 'Auto-generated pull request to pull updates from {fromBranch} into {toBranch}'
+          PULL_REQUEST_IS_DRAFT: false
+          CONTENT_COMPARISON: true
+          REVIEWERS: [davidrbourke]
