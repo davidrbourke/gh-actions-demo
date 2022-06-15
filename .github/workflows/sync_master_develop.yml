@@ -24,9 +24,5 @@ jobs:
           CONTENT_COMPARISON: true
           REVIEWERS: '["davidrbourke"]'
           
-      - name: Set Auto merge
-        if: steps.Sync.outcome == 'success'
-        uses: kenhowardpdx/auto-merge-action@v1
-        with:
-          token: ${{ github.token }}
-          merge_method: MERGE
+      - name: Props
+        run: echo '${{ toJSON(github) }}'
