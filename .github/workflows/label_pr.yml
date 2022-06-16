@@ -12,6 +12,6 @@ jobs:
         uses: Bhacaz/label-regex@v1
         with:
           field: body
-          regex: 'automerge'
+          regex: '(AUTOMERGE)'
           lowercase: true
           token: ${{ github.token }}
