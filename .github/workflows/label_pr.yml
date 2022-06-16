@@ -13,4 +13,4 @@ jobs:
       - uses: harupy/auto-labeling@master
         with:
           github-token: ${{ github.token }}
-          label-pattern: 'AUTOMERGE'
+          label-pattern: '- \[(.*?)\] ?`(.+?)`'
