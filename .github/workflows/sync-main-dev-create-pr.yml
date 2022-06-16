@@ -15,7 +15,7 @@ jobs:
       - name: Create Pull Request
         uses: repo-sync/pull-request@v2
         with:
-          source_branch: "master"
+          source_branch: "main"
           destination_branch: "develop"
           github_token: ${{ github.token }}
           pr_title: "Merge master into develop"
