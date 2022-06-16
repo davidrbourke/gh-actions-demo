@@ -15,7 +15,7 @@ jobs:
       - name: Sync
         uses: TreTuna/sync-branches@1.4.0
         with:
-          GITHUB_TOKEN: ${{ github.token }}
+          GITHUB_TOKEN: ${{ secrets.personal_access_token }}
           FROM_BRANCH: main
           TO_BRANCH: develop
           PULL_REQUEST_TITLE: "Auto-generated Pull 'main' branch updates into 'develop' branch"
