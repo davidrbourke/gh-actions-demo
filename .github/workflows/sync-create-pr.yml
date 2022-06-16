@@ -1,0 +1,26 @@
+name: 'Synchronise develop from master'
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout out code
+        uses: actions/checkout@v3
+
+      - name: Create Pull Request
+        uses: repo-sync/pull-request@v2
+        with:
+          source_branch: "main"
+          destination_branch: "develop"
+          github_token: ${{ github.token }}
+          pr_title: "Merge master into develop"
+          pr_body: "Auto-generated PR by workflow actions when master is ahead of develop"
+          pr_reviewer: "davidrbourke"
+          pr_allow_empty: false
+          pr_label: "automerge"
+
