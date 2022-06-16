@@ -11,7 +11,7 @@ jobs:
       - name: "Assign label to new Pull Request"
         uses: Bhacaz/label-regex@v1
         with:
-          field: title
+          field: body
           regex: 'automerge'
           lowercase: true
           token: ${{ github.token }}
