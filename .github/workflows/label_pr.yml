@@ -1,17 +1,16 @@
-name: Label PR
+name: Auto Labeling
 on:
   pull_request:
-    types: [opened]
-
+    types:
+      - opened
+      - edited
 jobs:
-  label_regex:
+  labeling:
     runs-on: ubuntu-latest
-    name: Add label
     steps:
-      - name: "Assign label to new Pull Request"
-        uses: Bhacaz/label-regex@v1
+      - uses: actions/checkout@v2
+
+      - uses: harupy/auto-labeling@master
         with:
-          field: body
-          regex: '(AUTOMERGE)'
-          lowercase: true
-          token: ${{ github.token }}
+          github-token: ${{ github.token }}
+          label-pattern: 'AUTOMERGE'
