@@ -26,3 +26,9 @@ jobs:
 
       - name: Props
         run: echo '${{ toJSON(github) }}'
+  
+      - name: Label
+        uses: harupy/auto-labeling@master
+        with:
+          github-token: ${{ secrets.personal_access_token }}
+          label-pattern: '- \[(.*?)\] ?`(automerge+?)`'
