@@ -1,0 +1,17 @@
+name: Label PR
+on:
+  pull_request:
+    types: [opened]
+
+jobs:
+  label_regex:
+    runs-on: ubuntu-latest
+    name: Add label
+    steps:
+      - name: "Assign label to new Pull Request"
+        uses: Bhacaz/label-regex@v1
+        with:
+          field: title
+          regex: 'automerge'
+          lowercase: true
+          token: ${{ github.token }}
