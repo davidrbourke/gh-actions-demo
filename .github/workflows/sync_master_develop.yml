@@ -19,7 +19,7 @@ jobs:
           FROM_BRANCH: main
           TO_BRANCH: develop
           PULL_REQUEST_TITLE: "Auto-generated Pull 'main' branch updates into 'develop' branch"
-          PULL_REQUEST_BODY: "automerge - pull request to pull updates from 'main' branch into 'develop' branch."
+          PULL_REQUEST_BODY: "- [x] `automerge`"
           PULL_REQUEST_IS_DRAFT: false
           CONTENT_COMPARISON: true
           REVIEWERS: '["davidrbourke"]'
