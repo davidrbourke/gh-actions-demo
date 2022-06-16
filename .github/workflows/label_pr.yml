@@ -3,7 +3,7 @@ on:
   pull_request:
     types:
       - opened
-      - edited
+      - assigned
 jobs:
   labeling:
     runs-on: ubuntu-latest
