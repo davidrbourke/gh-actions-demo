@@ -12,7 +12,7 @@ jobs:
       - name: Checkout out code
         uses: actions/checkout@v3
 
-      - name: Sync branches
+      - name: Sync
         uses: TreTuna/sync-branches@1.4.0
         with:
           GITHUB_TOKEN: ${{ github.token }}
@@ -24,4 +24,5 @@ jobs:
           CONTENT_COMPARISON: true
           REVIEWERS: '["davidrbourke"]'
 
-        
+      - name: Props
+        run: echo '${{ toJSON(github) }}'
