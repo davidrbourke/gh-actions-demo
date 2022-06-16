@@ -1,4 +1,4 @@
-name: automerge
+name: Sync main-dev merge pr
 on:
   pull_request:
     types:

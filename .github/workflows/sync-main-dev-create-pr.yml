@@ -1,4 +1,4 @@
-name: 'Synchronise develop from master'
+name: Sync main-dev create pr
 on:
   push:
     branches: [ "main" ]
