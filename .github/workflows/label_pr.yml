@@ -3,7 +3,7 @@ on:
   pull_request:
     types:
       - opened
-      - edited
+      - assigned
 jobs:
   labeling:
     runs-on: ubuntu-latest
@@ -12,5 +12,5 @@ jobs:
 
       - uses: harupy/auto-labeling@master
         with:
-          github-token: ${{ github.token }}
+          github-token: ${{ secrets.personal_access_token }}
           label-pattern: '- \[(.*?)\] ?`(automerge+?)`'
