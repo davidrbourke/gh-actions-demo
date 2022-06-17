@@ -2,25 +2,26 @@ name: custom-create-pr
 on: [push]
 
 jobs:
-  hello_world_job:
+  create_pull_request:
     runs-on: ubuntu-latest
-    name: A job to say hello
+    name: A job to create a pull request
     steps:
       # To use this repository's private action,
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
       
-      - name: Print
+      - name: Print dir
         run: |
           pwd
           ls -a
         
-      - name: Hello world action step
+      - name: Create pull request step
         uses: ./.github/actions/custom-create-pr # Uses an action in the root directory
-        id: hello
+        id: create_pr
         with:
-          who-to-greet: 'David'
-      # Use the output from the `hello` step
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+          source_branch: 'master'
+          target_branch: 'develop'
+      # Use the output from the `create_pr` step
+      - name: Get the pull request name
+        run: echo "The time was ${{ steps.create_pr.outputs.pr_name }}"
