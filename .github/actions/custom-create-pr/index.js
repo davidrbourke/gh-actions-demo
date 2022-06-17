@@ -23,22 +23,27 @@ async function execAction() {
     console.log(owner);
     console.log(repo);
 
-    const { data: pullRequest } = await octokit.rest.pulls.create({
-      owner,
-      repo,
-      head: sourceBranch,
-      base: targetBranch,
-      title: prName
-    });
+    var hasDiffs = await hasBranchDifferences(owner, repo, sourceBranch, targetBranch);
+    if (hasDiffs) {
+      const { data: pullRequest } = await octokit.rest.pulls.create({
+        owner,
+        repo,
+        head: sourceBranch,
+        base: targetBranch,
+        title: prName
+      });
 
-    await hasBranchDifferences(owner, repo, sourceBranch, targetBranch);
-    await addLabel(owner, repo, pullRequest.number, label);
+      await addLabel(owner, repo, pullRequest.number, label);
 
-    console.log('Created pr data:');
-    console.dir(pullRequest);
+      console.log('Created pr data:');
+      console.dir(pullRequest);
 
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
-    console.log(`The event payload: ${payload}`);
+      const payload = JSON.stringify(github.context.payload, undefined, 2);
+      console.log(`The event payload: ${payload}`);
+    }
+    else {
+      console.log('No file differences - pr not created');
+    }
   }
   catch (error) {
     core.setFailed(error.message);
@@ -87,17 +92,17 @@ async function addLabel(owner, repo, issue_number, label) {
 
 async function hasBranchDifferences(owner, repo, sourceBranch, targetBranch) {
   console.log('Checking for branch differences');
-  const basehead = `${sourceBranch}...${targetBranch}`;
+  const basehead = `${sourceBranch}..${targetBranch}`;
   console.log(basehead);
 
-  const data = await octokit.rest.repos.compareCommitsWithBasehead({
+  const { data: output } = await octokit.rest.repos.compareCommitsWithBasehead({
     owner,
     repo,
     basehead
   });
 
-  console.log("has diffs");
-  console.dir(data);
+  console.dir(output);
+  return output.files.length > 0;
 }
 
 execAction();
