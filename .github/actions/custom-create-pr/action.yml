@@ -10,6 +10,9 @@ inputs:
     description: 'the branch to merge to'
     required: true
     default: 'develop'
+  github_token:
+    description: 'the github token'
+    required: true
 outputs:
   pr_name:
     description: 'The name of the created pull request'
