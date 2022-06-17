@@ -29,6 +29,17 @@ async function execAction() {
       title: prName
     });
 
+    console.log('Created pr data:');
+    console.dir(pullRequest);
+
+    // Create label
+    octokit.rest.issues.addLabels({
+      owner,
+      repo,
+      issue_number: pullRequest.number,
+      labels: [ { name: 'automerge'}]
+    });
+
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
   }
