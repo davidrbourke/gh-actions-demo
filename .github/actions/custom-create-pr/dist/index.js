@@ -9039,17 +9039,22 @@ async function execAction() {
 
 async function addLabel(owner, repo, issue_number, label) {
     // Create label
-
-    var existingLabel = await octokit.rest.issues.getLabel({
-      owner,
-      repo,
-      name: label,
-    });
+    let labelFound = false;
+    try {
+      var existingLabel = await octokit.rest.issues.getLabel({
+        owner,
+        repo,
+        name: label,
+      });
+      labelFound = true;
+    } catch (error) {
+      console.log(error.message);
+    }
 
     console.log('Found label: ');
     console.dir(existingLabel);
 
-    if (!existingLabel) {
+    if (labelFound === false) {
       await octokit.rest.issues.createLabel({
         owner,
         repo,
