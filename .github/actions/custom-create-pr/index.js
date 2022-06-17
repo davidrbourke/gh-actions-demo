@@ -1,6 +1,7 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+let octokit;
 
 async function execAction() {
   try {
@@ -15,7 +16,7 @@ async function execAction() {
 
     core.setOutput("pr_name", prName);
 
-    const octokit = new github.getOctokit(githubToken);
+    octokit = new github.getOctokit(githubToken);
 
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 

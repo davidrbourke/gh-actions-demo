@@ -8994,6 +8994,7 @@ var __webpack_exports__ = {};
 const core = __nccwpck_require__(2392);
 const github = __nccwpck_require__(8567);
 
+let octokit;
 
 async function execAction() {
   try {
@@ -9008,7 +9009,7 @@ async function execAction() {
 
     core.setOutput("pr_name", prName);
 
-    const octokit = new github.getOctokit(githubToken);
+    octokit = new github.getOctokit(githubToken);
 
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
