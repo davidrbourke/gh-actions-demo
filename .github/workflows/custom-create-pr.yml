@@ -1,0 +1,29 @@
+name: custom-create-pr
+on: [push]
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+    name: A job to create a pull request
+    steps:
+      # To use this repository's private action,
+      # you must check out the repository
+      - name: Checkout
+        uses: actions/checkout@v3
+      
+      - name: Print dir
+        run: |
+          pwd
+          ls -a
+        
+      - name: Create pull request step
+        uses: ./.github/actions/custom-create-pr # Uses an action in the root directory
+        id: create_pr
+        with:
+          source_branch: 'main'
+          target_branch: 'develop'
+          github_token: ${{ github.token }}
+          label: 'automerge'
+      # Use the output from the `create_pr` step
+      - name: Get the pull request name
+        run: echo "Created pr - ${{ steps.create_pr.outputs.pr_name }}"

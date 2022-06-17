@@ -1,0 +1,23 @@
+name: 'Auto sync branches'
+author: 'davidbourkenbs'
+description: 'Creates a pull request from a source branch into a target branch'
+inputs:
+  source_branch: #id of input
+    description: 'the branch to merge from'
+    required: true
+    default: 'master'
+  target_branch: #id of input
+    description: 'the branch to merge to'
+    required: true
+    default: 'develop'
+  github_token:
+    description: 'the github token'
+    required: true
+  label:
+    description: 'the label to add to the pr'
+outputs:
+  pr_name:
+    description: 'The name of the created pull request'
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
