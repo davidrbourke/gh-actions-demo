@@ -10,7 +10,12 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
-
+      
+      - name: Print
+        run: |
+          pwd
+          ls -a
+        
       - name: Hello world action step
         uses: ./.github/actions/custom-create-pr # Uses an action in the root directory
         id: hello
