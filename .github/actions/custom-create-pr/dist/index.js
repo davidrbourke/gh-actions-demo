@@ -9007,7 +9007,7 @@ async function execAction() {
 
     core.setOutput("pr_name", prName);
 
-    const octokit = new github(githubToken);
+    const octokit = new github.getOctokit(githubToken);
 
     const [owner, repo] = process.env.GITHUB_REPOSITORY.split("/");
 
