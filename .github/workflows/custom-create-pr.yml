@@ -23,6 +23,7 @@ jobs:
           source_branch: 'main'
           target_branch: 'develop'
           github_token: ${{ github.token }}
+          label: 'automerge'
       # Use the output from the `create_pr` step
       - name: Get the pull request name
         run: echo "Created pr - ${{ steps.create_pr.outputs.pr_name }}"

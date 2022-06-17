@@ -9000,6 +9000,7 @@ async function execAction() {
     const sourceBranch = core.getInput('source_branch', {required: true });
     const targetBranch = core.getInput('target_branch', {required: true });
     const githubToken = core.getInput('github_token', {required: true });
+    const label = core.getInput('label');
 
     console.log(`Merge from ${sourceBranch} into ${targetBranch}`);
     
@@ -9022,16 +9023,10 @@ async function execAction() {
       title: prName
     });
 
+    addLabel(owner, repo, pullRequest.number, label);
+
     console.log('Created pr data:');
     console.dir(pullRequest);
-
-    // Create label
-    octokit.rest.issues.addLabels({
-      owner,
-      repo,
-      issue_number: pullRequest.number,
-      labels: ['automerge']
-    });
 
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
@@ -9039,6 +9034,20 @@ async function execAction() {
   catch (error) {
     core.setFailed(error.message);
   }
+}
+
+function addLabel(owner, repo, issue_number, label) {
+    // Create label
+    if (label) {
+      console.log(`Adding label: ${label}`)
+      octokit.rest.issues.addLabels({
+        owner,
+        repo,
+        issue_number,
+        labels: [label],
+        color: '#57f542'
+      });
+    }
 }
 
 execAction();
