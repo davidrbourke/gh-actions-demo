@@ -1,3 +1,3 @@
 # gh-actions-demo
 
-8
+7
