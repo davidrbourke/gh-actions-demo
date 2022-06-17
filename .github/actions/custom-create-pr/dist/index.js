@@ -9039,6 +9039,7 @@ async function execAction() {
 }
 
 async function addLabel(owner, repo, issue_number, label) {
+    console.log('adding label');
     // Create label
     let labelFound = false;
     try {
@@ -9078,6 +9079,8 @@ async function addLabel(owner, repo, issue_number, label) {
 }
 
 async function hasBranchDifferences(owner, repo, sourceBranch, targetBranch) {
+  console.log('Checking for branch differences');
+
   const data = await octokit.rest.repos.compareCommitsWithBasehead({
     owner,
     repo,
