@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v3
 
       - name: Hello world action step
-        uses: ./actions/custom-create-pr # Uses an action in the root directory
+        uses: ./github/actions/custom-create-pr # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: 'David'
