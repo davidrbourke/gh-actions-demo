@@ -91,7 +91,7 @@ async function hasBranchDifferences(owner, repo, sourceBranch, targetBranch) {
   const data = await octokit.rest.repos.compareCommitsWithBasehead({
     owner,
     repo,
-    basehead: `:${sourceBranch}...:${targetBranch}`
+    basehead: `${sourceBranch}..${targetBranch}`
   });
 
   console.log("has diffs");
