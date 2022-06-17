@@ -46,14 +46,22 @@ async function execAction() {
 
 function addLabel(owner, repo, issue_number, label) {
     // Create label
+    octokit.rest.issues.createLabel({
+      owner,
+      repo,
+      name: label,
+      color: '27ff28',
+      description: 'Pull requests marked with this label will be auto merged on approval'
+    })
+
+    // Add to pr
     if (label) {
       console.log(`Adding label: ${label}`)
       octokit.rest.issues.addLabels({
         owner,
         repo,
         issue_number,
-        labels: [label],
-        color: '#57f542'
+        labels: [label]
       });
     }
 }
