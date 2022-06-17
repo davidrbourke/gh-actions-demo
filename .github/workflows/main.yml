@@ -13,8 +13,8 @@ jobs:
       
       - name: Print
         run: |
-          echo pwd
-          echo ls
+          pwd
+          ls
         
       - name: Hello world action step
         uses: ./github/actions/custom-create-pr # Uses an action in the root directory
