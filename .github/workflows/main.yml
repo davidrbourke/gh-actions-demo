@@ -1,3 +1,4 @@
+name: custom-create-pr
 on: [push]
 
 jobs:
@@ -9,8 +10,9 @@ jobs:
       # you must check out the repository
       - name: Checkout
         uses: actions/checkout@v3
+
       - name: Hello world action step
-        uses: ./ # Uses an action in the root directory
+        uses: ./actions/custom-create-pr # Uses an action in the root directory
         id: hello
         with:
           who-to-greet: 'David'
