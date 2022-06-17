@@ -20,7 +20,7 @@ jobs:
         uses: ./.github/actions/custom-create-pr # Uses an action in the root directory
         id: create_pr
         with:
-          source_branch: 'master'
+          source_branch: 'main'
           target_branch: 'develop'
           github_token: ${{ github.token }}
       # Use the output from the `create_pr` step
