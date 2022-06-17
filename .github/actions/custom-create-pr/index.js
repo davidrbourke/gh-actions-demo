@@ -31,6 +31,7 @@ async function execAction() {
       title: prName
     });
 
+    await hasBranchDifferences();
     await addLabel(owner, repo, pullRequest.number, label);
 
     console.log('Created pr data:');
@@ -81,6 +82,17 @@ async function addLabel(owner, repo, issue_number, label) {
         labels: [label]
       });
     }
+}
+
+async function hasBranchDifferences(owner, repo, sourceBranch, targetBranch) {
+  const data = await octokit.rest.repos.compareCommitsWithBasehead({
+    owner,
+    repo,
+    basehead: `:${sourceBranch}...:${targetBranch}`
+  });
+
+  console.log("has diffs");
+  console.dir(data);
 }
 
 execAction();
