@@ -31,7 +31,7 @@ async function execAction() {
       title: prName
     });
 
-    await hasBranchDifferences();
+    await hasBranchDifferences(owner, repo, sourceBranch, targetBranch);
     await addLabel(owner, repo, pullRequest.number, label);
 
     console.log('Created pr data:');
