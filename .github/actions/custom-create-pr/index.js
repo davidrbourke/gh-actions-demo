@@ -31,7 +31,7 @@ async function execAction() {
       title: prName
     });
 
-    addLabel(owner, repo, pullRequest.number, label);
+    await addLabel(owner, repo, pullRequest.number, label);
 
     console.log('Created pr data:');
     console.dir(pullRequest);
@@ -44,10 +44,10 @@ async function execAction() {
   }
 }
 
-function addLabel(owner, repo, issue_number, label) {
+async function addLabel(owner, repo, issue_number, label) {
     // Create label
 
-    var existingLabel = octokit.rest.issues.getLabel({
+    var existingLabel = await octokit.rest.issues.getLabel({
       owner,
       repo,
       name: label,
@@ -57,7 +57,7 @@ function addLabel(owner, repo, issue_number, label) {
     console.dir(existingLabel);
 
     if (!existingLabel) {
-      octokit.rest.issues.createLabel({
+      await octokit.rest.issues.createLabel({
         owner,
         repo,
         name: label,
