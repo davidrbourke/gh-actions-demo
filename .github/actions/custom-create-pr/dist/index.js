@@ -9040,7 +9040,7 @@ async function execAction() {
 function addLabel(owner, repo, issue_number, label) {
     // Create label
 
-    var { data: existingLabel } = octokit.rest.issues.getLabel({
+    var existingLabel = octokit.rest.issues.getLabel({
       owner,
       repo,
       name: label,
