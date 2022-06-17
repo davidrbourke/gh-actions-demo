@@ -9030,7 +9030,7 @@ async function execAction() {
       owner,
       repo,
       issue_number: pullRequest.number,
-      labels: [ { name: 'automerge'}]
+      labels: ['automerge']
     });
 
     const payload = JSON.stringify(github.context.payload, undefined, 2);
