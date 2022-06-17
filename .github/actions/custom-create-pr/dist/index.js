@@ -9080,11 +9080,13 @@ async function addLabel(owner, repo, issue_number, label) {
 
 async function hasBranchDifferences(owner, repo, sourceBranch, targetBranch) {
   console.log('Checking for branch differences');
+  const basehead = `${sourceBranch}...${targetBranch}`;
+  console.log(basehead);
 
   const data = await octokit.rest.repos.compareCommitsWithBasehead({
     owner,
     repo,
-    basehead: `${sourceBranch}..${targetBranch}`
+    basehead
   });
 
   console.log("has diffs");
