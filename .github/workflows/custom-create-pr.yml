@@ -17,8 +17,7 @@ jobs:
           ls -a
         
       - name: Create pull request step
-        uses: davidrbourke/create-custom-pr@v1.1.0
-        working-directory: action
+        uses: davidrbourke/create-custom-pr/action@v1.1.0
 
         id: create_pr
         with:
