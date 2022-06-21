@@ -1,13 +1,13 @@
 {
   "name": "custom-create-pr",
   "version": "1.0.0",
-  "description": "",
+  "description": "A custom github action to create a pull request.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["github action"],
+  "author": "davidbourkenbs",
   "license": "ISC",
   "dependencies": {
     "@actions/core": "^1.9.0",

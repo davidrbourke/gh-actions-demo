@@ -3,7 +3,7 @@ const github = require('@actions/github');
 
 let octokit;
 
-async function execAction() {
+async function executeAction() {
   try {
     const sourceBranch = core.getInput('source_branch', {required: true });
     const targetBranch = core.getInput('target_branch', {required: true });
@@ -105,4 +105,4 @@ async function hasBranchDifferences(owner, repo, sourceBranch, targetBranch) {
   return output.files.length > 0;
 }
 
-execAction();
+executeAction();
